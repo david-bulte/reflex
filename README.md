@@ -1,6 +1,6 @@
 # Reflex
 
-Simple Angular directive to assign flex values to child components. Medidative demo 
+Simple Angular directive to assign flex values to child components. Meditative demo 
 [here](https://david-bulte.github.io/reflex/).
 
 ## How to use it?
