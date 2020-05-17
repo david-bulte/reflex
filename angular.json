@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "projects/reflex/tsconfig.lib.json",
             "project": "projects/reflex/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/reflex/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -53,7 +58,7 @@
             "main": "projects/demo-app/src/main.ts",
             "polyfills": "projects/demo-app/src/polyfills.ts",
             "tsConfig": "projects/demo-app/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/demo-app/src/favicon.ico",
               "projects/demo-app/src/assets"
@@ -76,7 +81,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -85,6 +89,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -148,8 +156,13 @@
               "devServerTarget": "demo-app:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "reflex"
 }
