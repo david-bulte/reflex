@@ -1,0 +1,8 @@
+<div class="container" (click)="generateDivs()">
+  <div class="row" *ngFor="let reflexValue of reflexValues" [reflex]="reflexValue.value">
+    <div class="child">{{reflexValue.value}}</div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+</div>
+

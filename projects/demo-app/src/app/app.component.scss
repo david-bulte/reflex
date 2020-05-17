@@ -1,0 +1,18 @@
+div.container {
+  border: white 0.25rem solid;
+}
+
+div.row {
+  width: 100%;
+}
+
+div.child {
+  background-color: transparent;
+  color: white;
+  font-family: Arial;
+  padding: 0.25rem;
+  border: white 0.25rem solid;
+  height: 1rem;
+  line-height: 1rem;
+  transition: flex 4s;
+}
