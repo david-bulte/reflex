@@ -1,8 +1,14 @@
-<div class="container">
+<div class="main-container" *ngIf="reflexValues">
   <div class="row" *ngFor="let reflexValue of reflexValues" [reflex]="reflexValue.value">
     <div class="child">{{reflexValue.value}}</div>
     <div class="child"></div>
     <div class="child"></div>
   </div>
+</div>
+
+<div class="start-container">
+  <button class="enter" (click)="start()" @fadeInOut *ngIf="!started">
+    <i class="far fa-play-circle"></i>
+  </button>
 </div>
 

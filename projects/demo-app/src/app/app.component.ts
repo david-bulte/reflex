@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 const interval = 4000;
@@ -6,21 +7,34 @@ const interval = 4000;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ])
+  ]
 })
 export class AppComponent implements OnInit {
 
-  reflexValues = [];
+  started = false;
+  reflexValues;
 
   constructor(private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
     this.generateDivs();
+  }
 
+  start(): void {
     setTimeout(() => {
       this.play();
-    }, interval / 2);
+    });
+
+    this.started = true;
   }
 
   private generateDivs() {
@@ -36,7 +50,7 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       this.refreshReflexValues();
       this.cdr.markForCheck();
-      setTimeout(() => this.play(), interval/ 2)
+      setTimeout(() => this.play(), interval / 2)
     }, interval / 2)
   }
 
@@ -63,7 +77,7 @@ export class AppComponent implements OnInit {
 }
 
 const randomReflexValue = () => {
- return `${randomNumber()}-${randomNumber()}-${randomNumber()}`;
+  return `${randomNumber()}-${randomNumber()}-${randomNumber()}`;
 }
 
 const randomNumber = () => {
