@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     }, interval / 2);
   }
 
-  generateDivs() {
+  private generateDivs() {
     const values = [];
     for (let i = 0; i < 30; i++) {
       values.push({value: randomReflexValue()})
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
     oscNode.stop(audioContext.currentTime + kStartTime + 12 * kDecayTime); // Stop when the sound decays by enough.
   }
 
-  refreshReflexValues() {
+  private refreshReflexValues() {
     this.reflexValues.forEach(reflexValue => {
       reflexValue.value = randomReflexValue();
     })
