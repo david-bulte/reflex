@@ -27,7 +27,7 @@ will result in
 ```
 
 Spaces are also supported. Specify a series of zeroes, where 1 zero corresponds
- with 1 flex value. For example:
+ to a flex value of 1, 2 zeroes to 2 etc... For example:
 ```
 <div [reflex]="'3-2-1-0000-2'">
     <div>dance</div>
@@ -47,7 +47,7 @@ results in
 </div>
 ```
 
-Some might not find this approach so intuitive. You can of course provide 
+Some might find this approach not so intuitive. You can of course alos provide 
 an empty div yourself, and adapt the reflex expression, like so:
 
 ```
