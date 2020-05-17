@@ -1,24 +1,64 @@
 # Reflex
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
+Simple Angular directive to assign flex values to child components. Medidative demo 
+[here](https://david-bulte.github.io/reflex/).
 
-## Code scaffolding
+## How to use it?
 
-Run `ng generate component component-name --project reflex` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project reflex`.
-> Note: Don't forget to add `--project reflex` or else it will be added to the default project in your `angular.json` file. 
+Simply set the [reflex] directive on a container element, thereby passing a 
+dash-separated string that specifies flex values for each child.
 
-## Build
+For example, the following
 
-Run `ng build reflex` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+<div [reflex]="'3-2-1'">
+    <div>dance</div>
+    <div>dance</div>
+    <div>dance</div>
+</div>
+```
+will result in 
+```
+<div style="display:flex">
+    <div style="flex:3">dance</div>
+    <div style="flex:2">dance</div>
+    <div style="flex:1">dance</div>
+</div>
+```
 
-## Publishing
+Spaces are also supported. Specify a series of zeroes, where 1 zero corresponds
+ with 1 flex value. For example:
+```
+<div [reflex]="'3-2-1-0000-2'">
+    <div>dance</div>
+    <div>dance</div>
+    <div>dance</div>
+    <div>to the radio</div>
+</div>
+```
+results in 
+```
+<div style="display:flex">
+    <div style="flex:3">dance</div>
+    <div style="flex:2">dance</div>
+    <div style="flex:1">dance</div>
+    <div style="flex:4"></div>
+    <div style="flex:1">to the radio</div>
+</div>
+```
 
-After building your library with `ng build reflex`, go to the dist folder `cd dist/reflex` and run `npm publish`.
+Some might not find this approach so intuitive. You can of course provide 
+an empty div yourself, and adapt the reflex expression, like so:
 
-## Running unit tests
+```
+<div [reflex]="'3-2-1-4-2'">
+    <div>dance</div>
+    <div>dance</div>
+    <div>dance</div>
+    <div><div>
+    <div>to the radio</div>
+</div>
+```
 
-Run `ng test reflex` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Use this approach in the rare case you want to change the reflex epression 
+at runtime. See the [demo app](https://david-bulte.github.io/reflex/) for an example.
